@@ -15,32 +15,34 @@ function Node(val) {
 }
 
 function addLinkedList(l1, l2) {
-  let l1Val = 0;
-  let l2Val = 0;
+  let node1Val = 0;
+  let node2Val = 0;
   let count = 0;
-  while (l1) {
-    l1Val += Math.pow(10,count) * l1.value;
-    l1 = l1.next;
+  let node1 = l1;
+  let node2 = l2;
+  while (node1) {
+    node1Val += Math.pow(10, count) * node1.value;
+    node1 = node1.next;
     count++;
   }
   count = 0;
-  while (l2) {
-    l2Val += Math.pow(10,count) * l2.value;
-    l2 = l2.next;
+  while (node2) {
+    node2Val += Math.pow(10, count) * node2.value;
+    node2 = node2.next;
     count++;
   }
-  let output = l1Val + l2Val;
+  let output = node1Val + node2Val;
   output = output.toString();
-  let digit = parseInt(output.slice(output.length-1));
+  let digit = parseInt(output.slice(output.length - 1), 10);
   const head = new Node(digit);
   let node = head;
   while (output.length > 1) {
-    output = output.slice(0,output.length-1);
-    digit = parseInt(output.slice(output.length-1));
+    output = output.slice(0, output.length - 1);
+    digit = parseInt(output.slice(output.length - 1), 10);
     node.next = new Node(digit);
     node = node.next;
   }
   return head;
 }
 
-module.exports = {Node: Node, addLinkedList: addLinkedList};
+module.exports = { Node, addLinkedList };

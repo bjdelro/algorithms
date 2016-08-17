@@ -2,7 +2,7 @@
 const test = require('tape');
 const Node = require('./../challenges/add-linked-list.js').Node;
 const addLinkedList = require('./../challenges/add-linked-list.js').addLinkedList;
-test('addLinkedList Tests ', function (t) {
+test('addLinkedList Tests ', (t) => {
   t.plan(7);
 
   let l1 = new Node(3);
@@ -17,8 +17,9 @@ test('addLinkedList Tests ', function (t) {
 
   l1 = new Node(2);
   l2 = new Node(123);
-  sum = addLinkedList(l1, l2);
-  t.equal(sum.value + (sum.next.value * 10) + (sum.next.next.value * 100), 125, 'should add 1-digit to 3-digit');
+  const addedLL = addLinkedList(l1, l2);
+  sum = addedLL.value + (addedLL.next.value * 10) + (addedLL.next.next.value * 100);
+  t.equal(sum, 125, 'should add 1-digit to 3-digit');
 
   l1 = new Node(3);
   l2 = new Node(9);
@@ -36,7 +37,7 @@ test('addLinkedList Tests ', function (t) {
   let sumVal = 0;
   let count = 0;
   while (sum) {
-    sumVal += Math.pow(10,count) * sum.value;
+    sumVal += Math.pow(10, count) * sum.value;
     sum = sum.next;
     count++;
   }
